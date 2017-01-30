@@ -16,15 +16,13 @@ config :rumbl, Rumbl.Endpoint,
   url: [scheme: "https", host: "rumblapp.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/manifest.json",
-  secret_key_base: ("HIRnDnBb24tX9tuqT5kj8GvWR4bAuDBPfDrSN8T0H1uMwkQphoNQXfqvfTK0D7FG")
-
-
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 # Configure your database
 config :rumbl, Rumbl.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
-  pool_size: String.to_integer("10"),
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
   ssl: true
 # Do not print debug messages in production
 config :logger, level: :info
