@@ -21,7 +21,7 @@ config :rumbl, Rumbl.Endpoint,
 
 
 # Configure your database
-config :rumbl, Rumbl.Endpoint,
+config :rumbl, Rumbl.Repo,
   adapters: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
   pool_size: String.to_integer("10"),
